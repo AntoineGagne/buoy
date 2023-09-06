@@ -95,8 +95,7 @@ client_options(Protocol, Hostname, Port, Options) ->
         ?DEFAULT_RECONNECT_MAX),
     ReconnectTimeMin = ?LOOKUP(reconnect_time_min, Options,
         ?DEFAULT_RECONNECT_MIN),
-    SocketOptions = ?LOOKUP(socket_options, Options,
-        ?DEFAULT_SOCKET_OPTIONS),
+    SocketOptions = socket_options(Protocol, Options),
 
     [{ip, binary_to_list(Hostname)},
      {port, Port},
@@ -119,6 +118,16 @@ pool_options(Options) ->
     [{backlog_size, BacklogSize},
      {pool_size, PoolSize},
      {pool_strategy, PoolStrategy}].
+
+socket_options(Protocol, Options) ->
+    SocketOptions = ?LOOKUP(socket_options, Options, ?DEFAULT_SOCKET_OPTIONS),
+    Ssl = ssl_options(Protocol, Options),
+    SocketOptions ++ Ssl.
+
+ssl_options(https, Options) ->
+    ?LOOKUP(ssl_options, Options, ?DEFAULT_SSL_OPTIONS);
+ssl_options(_, _) ->
+    [].
 
 shackle_protocol(http) ->
     shackle_tcp;

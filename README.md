@@ -103,13 +103,19 @@ ok
   </tr>
   <tr>
     <td>socket_options</td>
-    <td>[gen_tcp:connect_option() | ssl:tls_client_option()]</td>
+    <td>[gen_tcp:connect_option()]</td>
     <td>[binary,
     {packet, line},
     {packet, raw},
     {send_timeout, 50},
     {send_timeout_close, true}]</td>
     <td>options passed to the socket when connecting</td>
+  </tr>
+  <tr>
+    <td>ssl_options</td>
+    <td>[ssl:tls_client_option()]</td>
+    <td>[{verify, verify_none}]</td>
+    <td>options passed to the ssl socket when connecting</td>
   </tr>
 </table>
 

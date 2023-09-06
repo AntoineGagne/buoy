@@ -27,4 +27,5 @@
     {packet, raw},
     {send_timeout, 50},
     {send_timeout_close, true}]).
+-define(DEFAULT_SSL_OPTIONS, [{verify, verify_none}]).
 -define(DEFAULT_TIMEOUT, 1000).
