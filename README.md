@@ -115,7 +115,7 @@ ok
     <td>ssl_options</td>
     <td>[ssl:tls_client_option()]</td>
     <td>[{verify, verify_none}]</td>
-    <td>options passed to the ssl socket when connecting</td>
+    <td>SSL options passed to the socket when connecting</td>
   </tr>
 </table>
 
